@@ -6,6 +6,7 @@
 	"sideEffects": false,
 	"type": "module",
 	"dependencies": {
+		"@mediapipe/tasks-vision": "^0.10.12",
 		"@remix-run/node": "^2.8.1",
 		"@remix-run/react": "^2.8.1",
 		"@remix-run/serve": "^2.8.1",
