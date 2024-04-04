@@ -8,6 +8,7 @@
 	"dependencies": {
 		"@mediapipe/tasks-vision": "^0.10.12",
 		"@radix-ui/react-label": "^2.0.2",
+		"@radix-ui/react-slider": "^1.1.2",
 		"@radix-ui/react-slot": "^1.0.2",
 		"@remix-run/node": "^2.8.1",
 		"@remix-run/react": "^2.8.1",
