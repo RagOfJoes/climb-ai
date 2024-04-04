@@ -1,25 +1,17 @@
-import { useCallback, useEffect, useState } from "react";
+import type { DependencyList } from "react";
+import { useEffect } from "react";
 
-export function useAsync(callback: () => Promise<void>, dependencies = []) {
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState();
-	const [value, setValue] = useState();
+import type { FunctionReturningPromise } from "./use-async-fn";
+import useAsyncFn from "./use-async-fn";
 
-	const callbackMemoized = useCallback(() => {
-		setLoading(true);
-		setError(undefined);
-		setValue(undefined);
-
-		callback()
-			// @ts-expect-error
-			.then(setValue)
-			.catch(setError)
-			.finally(() => setLoading(false));
-	}, dependencies);
+export function useAsync<T extends FunctionReturningPromise>(fn: T, deps: DependencyList = []) {
+	const [state, callback] = useAsyncFn(fn, deps, {
+		loading: true,
+	});
 
 	useEffect(() => {
-		callbackMemoized();
-	}, [callbackMemoized]);
+		callback();
+	}, [callback]);
 
-	return { loading, error, value };
+	return state;
 }
