@@ -1,4 +1,6 @@
+.gitignore
+
 node_modules
 out
 
-public/wasm
+public

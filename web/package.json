@@ -52,7 +52,7 @@
 		"build": "remix vite:build",
 		"dev": "remix vite:dev",
 		"format": "prettier --write \"**/*.{json,ts,tsx}\"",
-		"lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
+		"lint": "TIMING=1 eslint \"./app/**/*.{js,jsx,ts,tsx}\" --fix",
 		"start": "remix-serve ./build/server/index.js",
 		"typecheck": "tsc"
 	}

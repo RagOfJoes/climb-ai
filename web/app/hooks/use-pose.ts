@@ -210,6 +210,7 @@ export function usePose(): UsePoseReturn {
 		toggleIsLoading(false);
 
 		// Cleanup
+		// eslint-disable-next-line consistent-return
 		return () => {
 			landmarker.current?.close();
 
@@ -235,13 +236,20 @@ export function usePose(): UsePoseReturn {
 		// Create event listener and start detection
 		video.current.addEventListener("play", processVideo);
 
+		// Create event listener for window resize that sets the canvas dimension
+		window.addEventListener("resize", loadVideo);
+
 		// Cleanup
 		// eslint-disable-next-line consistent-return
 		return () => {
 			video.current?.removeEventListener("loadeddata", loadVideo);
 			video.current?.removeEventListener("play", processVideo);
+
+			window.removeEventListener("resize", loadVideo);
 		};
-	}, [canvas.current, landmarker.current, video.current]);
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [canvas.current, video.current]);
 
 	// Actions
 	//
@@ -252,7 +260,7 @@ export function usePose(): UsePoseReturn {
 		}
 
 		video.current.currentTime += 10;
-	}, [video.current]);
+	}, []);
 
 	const rewindVideo = useCallback(() => {
 		if (!video.current) {
@@ -260,7 +268,7 @@ export function usePose(): UsePoseReturn {
 		}
 
 		video.current.currentTime -= 10;
-	}, [video.current]);
+	}, []);
 
 	const setCanvas = useCallback((ref: HTMLCanvasElement) => {
 		canvas.current = ref;
@@ -270,16 +278,13 @@ export function usePose(): UsePoseReturn {
 		video.current = ref;
 	}, []);
 
-	const setVideoSrc = useCallback(
-		(url: string) => {
-			if (!video.current) {
-				return;
-			}
+	const setVideoSrc = useCallback((url: string) => {
+		if (!video.current) {
+			return;
+		}
 
-			video.current.src = url;
-		},
-		[video.current],
-	);
+		video.current.src = url;
+	}, []);
 
 	const toggleVideo = useCallback(() => {
 		if (!video.current) {
@@ -291,7 +296,7 @@ export function usePose(): UsePoseReturn {
 		} else {
 			video.current.pause();
 		}
-	}, [video.current]);
+	}, []);
 
 	return [
 		{
