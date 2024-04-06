@@ -1,3 +1,4 @@
+// TODO: Fix Popover volume thingy
 import { useEffect, useState } from "react";
 
 import { useSearchParams } from "@remix-run/react";
@@ -8,6 +9,11 @@ import { Input } from "@/components/input";
 import { Label } from "@/components/label";
 import { Slider } from "@/components/slider";
 import { Textarea } from "@/components/textarea";
+import {
+	VolumeControl,
+	VolumeControlContent,
+	VolumeControlTrigger,
+} from "@/components/volume-control";
 import { usePose } from "@/hooks/use-pose";
 
 export default function Index() {
@@ -18,6 +24,7 @@ export default function Index() {
 	const [searchParams] = useSearchParams();
 
 	const [isPaused, toggleIsPaused] = useState(true);
+	// const [isVolumeOpen, toggleIsVolumeOpen] = useState(false);
 	const [volume, setVolume] = useState(0);
 
 	// TODO: Update this to pull from user upload
@@ -28,6 +35,8 @@ export default function Index() {
 		}
 
 		setVideoSrc(url);
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
@@ -36,7 +45,7 @@ export default function Index() {
 		}
 
 		setVolume(video.current.volume);
-	}, [video.current]);
+	}, [video]);
 
 	return (
 		<main className="mx-auto max-w-screen-lg">
@@ -125,43 +134,46 @@ export default function Index() {
 						</Button>
 
 						<div className="flex w-full gap-2">
-							<Button
-								aria-label="Volume"
-								disabled={isLoading}
-								onClick={() => {
-									if (!video.current) {
-										return;
-									}
+							<VolumeControl skipDelayDuration={150}>
+								<VolumeControlTrigger
+									disabled={isLoading}
+									onClick={() => {
+										if (!video.current) {
+											return;
+										}
 
-									setVolume(0);
-									video.current.volume = 0;
-								}}
-								size="icon"
-								variant="ghost"
-							>
-								{volume === 0 && <VolumeX className="h-4 w-4" />}
+										setVolume(0);
+										video.current.volume = 0;
+									}}
+								>
+									{volume === 0 && <VolumeX className="h-4 w-4" />}
 
-								{volume > 0 && volume < 0.5 && <Volume className="h-4 w-4" />}
-								{volume > 0.5 && volume < 0.75 && <Volume1 className="h-4 w-4" />}
-								{volume > 0.75 && <Volume2 className="h-4 w-4" />}
-							</Button>
+									{volume > 0 && volume < 0.5 && <Volume className="h-4 w-4" />}
+									{volume > 0.5 && volume < 0.75 && <Volume1 className="h-4 w-4" />}
+									{volume > 0.75 && <Volume2 className="h-4 w-4" />}
+								</VolumeControlTrigger>
 
-							<Slider
-								className="w-full"
-								disabled={isLoading}
-								max={100}
-								min={0}
-								onValueChange={(newValue) => {
-									if (!video.current) {
-										return;
-									}
+								<VolumeControlContent>
+									<div className="w-[250px] p-4">
+										<Slider
+											className="w-full"
+											disabled={isLoading}
+											max={100}
+											min={0}
+											onValueChange={(newValue) => {
+												if (!video.current) {
+													return;
+												}
 
-									video.current.volume = newValue[0]! / 100;
-									setVolume(newValue[0]! / 100);
-								}}
-								step={1}
-								value={[volume * 100]}
-							/>
+												video.current.volume = newValue[0]! / 100;
+												setVolume(newValue[0]! / 100);
+											}}
+											step={1}
+											value={[volume * 100]}
+										/>
+									</div>
+								</VolumeControlContent>
+							</VolumeControl>
 						</div>
 					</div>
 				</div>
