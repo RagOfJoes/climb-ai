@@ -1,6 +1,7 @@
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "@remix-run/react";
 
+import { TooltipProvider } from "@/components/tooltip";
 import style from "@/styles/tailwind.css?url";
 
 export const links: LinksFunction = () => [
@@ -27,7 +28,9 @@ export default function App() {
 				<Links />
 			</head>
 			<body className="h-dvh bg-background">
-				<Outlet />
+				<TooltipProvider delayDuration={250}>
+					<Outlet />
+				</TooltipProvider>
 
 				<ScrollRestoration />
 				<Scripts />
