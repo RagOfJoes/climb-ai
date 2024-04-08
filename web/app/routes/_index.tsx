@@ -19,12 +19,19 @@ import { usePose } from "@/hooks/use-pose";
 export default function Index() {
 	const [
 		{ isLoading, video },
-		{ forwardVideo, rewindVideo, setCanvas, setVideo, setVideoSrc, toggleVideoPlayState },
+		{
+			forwardVideo,
+			rewindVideo,
+			setCanvas,
+			setVideo,
+			setVideoSrc,
+			setVideoVolume,
+			toggleVideoPlayState,
+		},
 	] = usePose();
 	const [searchParams] = useSearchParams();
 
 	const [isPaused, toggleIsPaused] = useState(true);
-	// const [isVolumeOpen, toggleIsVolumeOpen] = useState(false);
 	const [volume, setVolume] = useState(0);
 
 	// TODO: Update this to pull from user upload
@@ -142,8 +149,8 @@ export default function Index() {
 											return;
 										}
 
+										setVideoVolume(0);
 										setVolume(0);
-										video.current.volume = 0;
 									}}
 								>
 									{volume === 0 && <VolumeX className="h-4 w-4" />}
@@ -165,7 +172,7 @@ export default function Index() {
 													return;
 												}
 
-												video.current.volume = newValue[0]! / 100;
+												setVideoVolume(newValue[0]! / 100);
 												setVolume(newValue[0]! / 100);
 											}}
 											step={1}

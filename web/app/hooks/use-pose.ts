@@ -1,7 +1,7 @@
 import type { RefObject } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { FilesetResolver, PoseLandmarker } from "@mediapipe/tasks-vision";
+import * as ort from "onnxruntime-web";
 
 import { getCanvasDimension } from "@/lib/get-canvas-dimension";
 
@@ -18,63 +18,25 @@ export type UsePoseReturn = [
 		setCanvas: (ref: HTMLCanvasElement) => void;
 		setVideo: (ref: HTMLVideoElement) => void;
 		setVideoSrc: (url: string) => void;
+		setVideoVolume: (volume: number) => void;
 		toggleVideoPlayState: () => void;
 	},
 ];
 
-// Landmark visibility threshold
-// TODO: Play around with this value
-const MIN_VISIBILITY = 0.3;
-
-// Connections between landmarks
-const POSE_CONNECTIONS = [
-	[11, 12],
-	[11, 13],
-	[13, 15],
-	[15, 17],
-	[15, 19],
-	[15, 21],
-	[17, 19],
-	[12, 14],
-	[14, 16],
-	[16, 18],
-	[16, 20],
-	[16, 22],
-	[18, 20],
-	[11, 23],
-	[12, 24],
-	[23, 24],
-	[23, 25],
-	[24, 26],
-	[25, 27],
-	[26, 28],
-	[27, 29],
-	[28, 30],
-	[29, 31],
-	[30, 32],
-	[27, 31],
-	[28, 32],
-].map((connection) => ({ start: connection[0]!, end: connection[1]! }));
-
-// Landmark indices for left side of the body
-// Ref: https://developers.google.com/mediapipe/solutions/vision/pose_landmarker/#pose_landmarker_model
-const POSE_LANDMARKER_LEFT = [27, 13, 31, 29, 23, 19, 25, 17, 11, 21, 15];
-// Landmark indices for right side of the body
-// Ref: https://developers.google.com/mediapipe/solutions/vision/pose_landmarker/#pose_landmarker_model
-const POSE_LANDMARKER_RIGHT = [28, 14, 32, 30, 24, 20, 26, 18, 12, 22, 16];
-
 // Hook for pose detection. Requires a canvas and video element to be set
+//
+// TODO: Play around different ONNXRuntime backends
 export function usePose(): UsePoseReturn {
 	const canvas = useRef<HTMLCanvasElement>();
 	const context = useRef<CanvasRenderingContext2D>();
-	const landmarker = useRef<PoseLandmarker>();
 	const raf = useRef<number>();
+	const session = useRef<{ net: ort.InferenceSession; nms: ort.InferenceSession }>();
 	const video = useRef<HTMLVideoElement>();
 
 	const [isLoading, toggleIsLoading] = useState(true);
 
 	// Sets canvas dimension
-	const loadVideo = () => {
+	const loadVideo = async () => {
 		if (!canvas.current || !video.current) {
 			return;
 		}
@@ -84,142 +46,149 @@ export function usePose(): UsePoseReturn {
 		canvas.current.height = height;
 	};
 
-	// Process video frames
+	// TODO: Figure out a way to optimize this
 	const processVideo = useCallback(async () => {
-		// Typechecks
-		if (!canvas.current || !context.current || !landmarker.current || !video.current) {
+		if (!canvas.current || !context.current || !session.current || !video.current) {
 			return;
 		}
 
-		const height = canvas.current.height;
-		const width = canvas.current.width;
+		// eslint-disable-next-line no-bitwise
+		const resizedHeight = 640 >> 0;
+		// eslint-disable-next-line no-bitwise
+		const resizedWidth = 640 >> 0;
 
-		// Detect landmarks for video frame
-		landmarker.current.detectForVideo(video.current, performance.now(), (result) => {
-			// Typechecks
-			if (!canvas.current || !context.current) {
-				return;
-			}
+		const frameCanvas = document.createElement("canvas");
+		frameCanvas.height = resizedHeight;
+		frameCanvas.width = resizedWidth;
 
-			// Clear canvas
-			context.current.save();
-			context.current.clearRect(0, 0, width, height);
-
-			// Iterate over detected landmarks
-			result.landmarks.forEach((landmarks) => {
-				if (!context.current) {
-					return;
-				}
-
-				// Draw connections
-				// NOTE: The order matters here since we want the landmark dots to be above the connections
-				POSE_CONNECTIONS.forEach((connection) => {
-					if (!canvas.current || !context.current) {
-						return;
-					}
-
-					const from = landmarks[connection.start];
-					const to = landmarks[connection.end];
-
-					// Skip if visibility is below threshold
-					if (
-						!from ||
-						!to ||
-						from.visibility <= MIN_VISIBILITY ||
-						to.visibility <= MIN_VISIBILITY
-					) {
-						return;
-					}
-
-					// Set proper styles for connections
-					// TODO: Play around with the colors
-					context.current.lineWidth = 2;
-					context.current.strokeStyle = "white";
-
-					// Draw line
-					const fromX = from.x * width;
-					const fromY = from.y * height;
-
-					const toX = to.x * width;
-					const toY = to.y * height;
-
-					context.current.beginPath();
-					context.current.moveTo(fromX, fromY);
-					context.current.lineTo(toX, toY);
-					context.current.stroke();
-				});
-
-				// Iterate over landmarks and draw dots on canvas
-				landmarks.forEach((landmark, index) => {
-					// Skip if landmark is above the shoulders and visibility is below threshold
-					if (
-						!canvas.current ||
-						!context.current ||
-						!video.current ||
-						index <= 10 ||
-						landmark.visibility <= MIN_VISIBILITY
-					) {
-						return;
-					}
-
-					// Set proper styles for landmarks depending on the side of the body
-					// TODO: Play around with the colors
-					if (POSE_LANDMARKER_LEFT.includes(index)) {
-						context.current.fillStyle = "rgb(255, 138, 0)";
-						context.current.strokeStyle = "rgb(255, 138, 0)";
-					} else if (POSE_LANDMARKER_RIGHT.includes(index)) {
-						context.current.fillStyle = "rgb(0,217,231)";
-						context.current.strokeStyle = "rgb(0,217,231)";
-					}
-
-					// Draw dot
-					const x = landmark.x * width;
-					const y = landmark.y * height;
-
-					const circle = new Path2D();
-					circle.arc(x, y, 2, 0, 2 * Math.PI);
-
-					context.current.fill(circle);
-					context.current.stroke(circle);
-				});
-			});
-
-			context.current.restore();
+		const frameContext = frameCanvas.getContext("2d", {
+			willReadFrequently: true,
 		});
+		if (!frameContext) {
+			return;
+		}
+
+		// Draw video frame to canvas
+		frameContext.drawImage(video.current, 0, 0, resizedWidth, resizedHeight);
+
+		// Resized video frame
+		const frame = frameContext.getImageData(0, 0, resizedWidth, resizedHeight).data;
+
+		const r: number[] = [];
+		const g: number[] = [];
+		const b: number[] = [];
+		for (let index = 0; index < frame.length; index += 4) {
+			r.push(frame[index]! / 255);
+			g.push(frame[index + 1]! / 255);
+			b.push(frame[index + 2]! / 255);
+		}
+
+		const input = [...r, ...g, ...b];
+
+		const inputShape = [1, 3, resizedWidth, resizedHeight];
+		const inputTensor = new ort.Tensor(Float32Array.from(input), inputShape);
+
+		const { output0 } = await session.current.net.run({
+			// `images` is from `session.current.inputNames`
+			images: inputTensor,
+		});
+		if (!output0) {
+			return;
+		}
+
+		const config = new ort.Tensor(
+			"float32",
+			new Float32Array([
+				50, // topk per class
+				0.45, // iou threshold
+				0.25, // score threshold
+			]),
+		);
+		const { selected } = await session.current.nms.run({ detection: output0, config });
+		if (!selected) {
+			return;
+		}
+
+		const { data, dims } = selected;
+		if (!data || dims.length < 3) {
+			return;
+		}
+
+		context.current.save();
+		context.current.clearRect(0, 0, canvas.current.width, canvas.current.height);
+
+		const keypoints: [x: number, y: number, confidence: number][] = [];
+		for (let i = 0; i < dims[1]!; i += 1) {
+			const sliced = data.slice(i * dims[2]!, (i + 1) * dims[2]!);
+
+			// Keypoints
+			const kpts = sliced.slice(5);
+
+			for (let j = 0; j < kpts.length; j += 3) {
+				const [x, y, score] = kpts.slice(j, j + 3);
+				keypoints.push([Number(x), Number(y), Number(score)]);
+			}
+		}
+
+		// eslint-disable-next-line no-restricted-syntax
+		for (const [x, y] of keypoints) {
+			context.current.fillStyle = "white";
+
+			const scaleX = canvas.current.width / 640;
+			const scaleY = canvas.current.height / 640;
+
+			const circle = new Path2D();
+			circle.arc(x * scaleX, y * scaleY, 2, 0, 2 * Math.PI);
+
+			context.current.fill(circle);
+			context.current.stroke(circle);
+		}
+
+		context.current.restore();
 
 		if (!video.current.paused) {
 			raf.current = requestAnimationFrame(processVideo);
 		}
 	}, []);
 
-	// Create and configure model
+	// Side Effects
+	//
+
+	// Setup ONNXRuntime
 	useAsync(async () => {
-		const vision = await FilesetResolver.forVisionTasks("/wasm");
-		landmarker.current = await PoseLandmarker.createFromOptions(vision, {
-			baseOptions: {
-				delegate: "GPU",
-				modelAssetPath: "/pose_landmarker_heavy.task",
-			},
-			minPoseDetectionConfidence: 0.3,
-			minPosePresenceConfidence: 0.5,
-			minTrackingConfidence: 0.5,
-			runningMode: "VIDEO",
-		});
+		if (session.current) {
+			return;
+		}
 
-		raf.current = requestAnimationFrame(processVideo);
-		toggleIsLoading(false);
+		// TODO: Properly handle error by displaying a message to the user
+		try {
+			const [net, nms] = await Promise.all([
+				ort.InferenceSession.create("/yolov8n-pose.onnx", {
+					executionProviders: [
+						{
+							name: "wasm",
+						},
+					],
+					executionMode: "parallel",
+					graphOptimizationLevel: "all",
+				}),
+				ort.InferenceSession.create("/nms-yolov8-pose.onnx", {
+					executionProviders: [
+						{
+							name: "wasm",
+						},
+					],
+					executionMode: "parallel",
+					graphOptimizationLevel: "all",
+				}),
+			]);
+			session.current = { net, nms };
 
-		// Cleanup
-		// eslint-disable-next-line consistent-return
-		return () => {
-			landmarker.current?.close();
-
-			if (!raf.current) {
-				return;
-			}
-
-			cancelAnimationFrame(raf.current);
-		};
+			raf.current = requestAnimationFrame(processVideo);
+			toggleIsLoading(false);
+		} catch (e) {
+			console.error(e);
+		}
 	}, []);
 
 	// Load video and setup canvas
@@ -249,7 +218,7 @@ export function usePose(): UsePoseReturn {
 		};
 
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [canvas.current, video.current]);
+	}, []);
 
 	// Actions
 	//
@@ -286,7 +255,15 @@ export function usePose(): UsePoseReturn {
 		video.current.src = url;
 	}, []);
 
-	const toggleVideo = useCallback(() => {
+	const setVideoVolume = useCallback((volume: number) => {
+		if (!video.current) {
+			return;
+		}
+
+		video.current.volume = volume;
+	}, []);
+
+	const toggleVideoPlayState = useCallback(() => {
 		if (!video.current) {
 			return;
 		}
@@ -309,7 +286,8 @@ export function usePose(): UsePoseReturn {
 			setCanvas,
 			setVideo,
 			setVideoSrc,
-			toggleVideoPlayState: toggleVideo,
+			setVideoVolume,
+			toggleVideoPlayState,
 		},
 	];
 }
