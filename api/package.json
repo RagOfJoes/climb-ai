@@ -6,7 +6,9 @@
 	},
 	"dependencies": {
 		"@hono/node-server": "^1.9.0",
-		"hono": "^4.1.7"
+		"dotenv": "^16.4.5",
+		"hono": "^4.1.7",
+		"mysql2": "^3.9.3"
 	},
 	"devDependencies": {
 		"@types/node": "^20.11.17",
