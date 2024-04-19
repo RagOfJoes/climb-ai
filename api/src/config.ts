@@ -35,7 +35,9 @@ export interface ServerConfig extends z.infer<typeof ServerConfigSchema> {}
 export const GoogleConfigSchema = ConfigSchema.pick({ Google: true });
 export interface GoogleConfig extends z.infer<typeof GoogleConfigSchema> {}
 
-export interface Config extends z.infer<typeof ConfigSchema> {}
+export interface Config extends z.infer<typeof ConfigSchema> {
+    Server: any;
+}
 
 // Loads the configuration based on the environment variables
 export function load_config(): z.SafeParseReturnType<unknown, Config> {

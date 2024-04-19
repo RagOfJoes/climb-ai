@@ -1,8 +1,17 @@
 import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import type { BlankInput, Env, H, HandlerResponse } from "hono/types";
+import { config } from 'dotenv';
 
 import type { Config } from "@/config";
+
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+
+
+
+config();
+
 
 /**
  * Wrapper class around the Hono router. Allows for this to be easily interchangeable
@@ -11,6 +20,8 @@ import type { Config } from "@/config";
 export class Router {
 	private config: Config;
 	private router: Hono;
+	private s3Client: S3Client;
+
 
 	// TODO: Setup services
 
@@ -18,10 +29,53 @@ export class Router {
 		this.config = config;
 		this.router = new Hono();
 
-		console.log("[handlers] Router initialized");
+		if (!process.env.AWS_ACCESS_KEY_ID || !process.env.AWS_SECRET_ACCESS_KEY) {
+			throw new Error('AWS credentials not found');
+		}
+
+		// Set up the S3 client
+		this.s3Client = new S3Client({
+			region: "us-west-2",
+			credentials: {
+				accessKeyId: "AKIA6GBMDZOUYFI2Z7WQ",
+				secretAccessKey: "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",
+			},
+		});
+
+
+
+		
+
+		console.log('[handlers] Router initialized');
 	}
 
+	private setupRoutes(): void {
+		// Setup the route to generate a presigned URL
+		this.router.get('/presigned-url', async (c) => {
+			const bucketName = "preprocessed-video-noraa"; // Your S3 Bucket
+			const objectKey = `uploads/${Date.now()}`; // Generate a unique key for the object
+
+			// Generate the presigned URL for PUT operations
+			const command = new PutObjectCommand({
+				Bucket: bucketName,
+				Key: objectKey,
+			});
+
+			try {
+				const url = await getSignedUrl(this.s3Client, command, { expiresIn: 3600 }); // URL expires in 1 hour
+				return c.json({ url });
+			} catch (error) {
+				console.error('Error generating S3 presigned URL:', error);
+				return c.json({ error: 'Failed to generate presigned URL' }, 500);
+			}
+		});
+	}
+
+
+
+
 	public run(): void {
+		this.setupRoutes();
 		this.router.routes.forEach((route) => {
 			console.log("[handlers] Attached %s %s", route.method, route.path);
 		});
@@ -85,4 +139,6 @@ export class Router {
 	) {
 		this.router.put(path, callback);
 	}
+
+	
 }
