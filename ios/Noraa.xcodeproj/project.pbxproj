@@ -66,6 +66,7 @@
 		8B82007A2BD0393B0078FEB0 /* NoraaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoraaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8B82008A2BD03BE80078FEB0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8B82008B2BD085950078FEB0 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		8BD1CEA82BD96E9100DB02E8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		8BD7FAFA2BD2F1BD002D65C9 /* IMG_2554.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = IMG_2554.mov; sourceTree = "<group>"; };
 		8BE504FA2BD4B74E00B36662 /* AVAsset+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAsset+Extensions.swift"; sourceTree = "<group>"; };
 		8BE504FE2BD789CD00B36662 /* EditorPlayerControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorPlayerControlView.swift; sourceTree = "<group>"; };
@@ -121,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				8B82008A2BD03BE80078FEB0 /* README.md */,
+				8BD1CEA82BD96E9100DB02E8 /* .gitignore */,
 				8B82005C2BD0393A0078FEB0 /* Noraa */,
 				8B82006D2BD0393B0078FEB0 /* NoraaTests */,
 				8B8200772BD0393B0078FEB0 /* NoraaUITests */,
