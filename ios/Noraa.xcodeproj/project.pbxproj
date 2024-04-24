@@ -1,0 +1,705 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8B42BB692BD190E7003A438D /* EditorPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B42BB682BD190E7003A438D /* EditorPlayerViewModel.swift */; };
+		8B42BB6B2BD192A0003A438D /* AVPlayerViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B42BB6A2BD192A0003A438D /* AVPlayerViewControllerRepresentable.swift */; };
+		8B42BB6D2BD19396003A438D /* EditorPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B42BB6C2BD19396003A438D /* EditorPlayerView.swift */; };
+		8B42BB6F2BD19926003A438D /* EditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B42BB6E2BD19926003A438D /* EditorViewModel.swift */; };
+		8B42BB712BD19A23003A438D /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B42BB702BD19A23003A438D /* Video.swift */; };
+		8B42BB732BD19B2D003A438D /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B42BB722BD19B2D003A438D /* Thumbnail.swift */; };
+		8B42BB762BD1A61B003A438D /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B42BB752BD1A61B003A438D /* UIImage+Extensions.swift */; };
+		8B82005E2BD0393A0078FEB0 /* NoraaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82005D2BD0393A0078FEB0 /* NoraaApp.swift */; };
+		8B8200602BD0393A0078FEB0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82005F2BD0393A0078FEB0 /* ContentView.swift */; };
+		8B8200622BD0393B0078FEB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B8200612BD0393B0078FEB0 /* Assets.xcassets */; };
+		8B8200652BD0393B0078FEB0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B8200642BD0393B0078FEB0 /* Preview Assets.xcassets */; };
+		8B82006F2BD0393B0078FEB0 /* NoraaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82006E2BD0393B0078FEB0 /* NoraaTests.swift */; };
+		8B8200792BD0393B0078FEB0 /* NoraaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8200782BD0393B0078FEB0 /* NoraaUITests.swift */; };
+		8B82007B2BD0393B0078FEB0 /* NoraaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82007A2BD0393B0078FEB0 /* NoraaUITestsLaunchTests.swift */; };
+		8B82008C2BD085950078FEB0 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82008B2BD085950078FEB0 /* EditorView.swift */; };
+		8BD7FAFB2BD2F1BD002D65C9 /* IMG_2554.mov in Resources */ = {isa = PBXBuildFile; fileRef = 8BD7FAFA2BD2F1BD002D65C9 /* IMG_2554.mov */; };
+		8BE504FB2BD4B74E00B36662 /* AVAsset+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE504FA2BD4B74E00B36662 /* AVAsset+Extensions.swift */; };
+		8BE504FF2BD789CD00B36662 /* EditorPlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE504FE2BD789CD00B36662 /* EditorPlayerControlView.swift */; };
+		8BE505012BD8388500B36662 /* EditorTimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE505002BD8388500B36662 /* EditorTimelineView.swift */; };
+		8BE505042BD83C2A00B36662 /* GOST.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8BE505022BD83C2A00B36662 /* GOST.ttf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8B82006B2BD0393B0078FEB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B8200522BD0393A0078FEB0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B8200592BD0393A0078FEB0;
+			remoteInfo = Norra;
+		};
+		8B8200752BD0393B0078FEB0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8B8200522BD0393A0078FEB0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B8200592BD0393A0078FEB0;
+			remoteInfo = Norra;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8B42BB682BD190E7003A438D /* EditorPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorPlayerViewModel.swift; sourceTree = "<group>"; };
+		8B42BB6A2BD192A0003A438D /* AVPlayerViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		8B42BB6C2BD19396003A438D /* EditorPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorPlayerView.swift; sourceTree = "<group>"; };
+		8B42BB6E2BD19926003A438D /* EditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewModel.swift; sourceTree = "<group>"; };
+		8B42BB702BD19A23003A438D /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		8B42BB722BD19B2D003A438D /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
+		8B42BB752BD1A61B003A438D /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		8B82005A2BD0393A0078FEB0 /* Noraa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noraa.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B82005D2BD0393A0078FEB0 /* NoraaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoraaApp.swift; sourceTree = "<group>"; };
+		8B82005F2BD0393A0078FEB0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8B8200612BD0393B0078FEB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8B8200642BD0393B0078FEB0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8B82006A2BD0393B0078FEB0 /* NoraaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoraaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B82006E2BD0393B0078FEB0 /* NoraaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoraaTests.swift; sourceTree = "<group>"; };
+		8B8200742BD0393B0078FEB0 /* NoraaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NoraaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B8200782BD0393B0078FEB0 /* NoraaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoraaUITests.swift; sourceTree = "<group>"; };
+		8B82007A2BD0393B0078FEB0 /* NoraaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoraaUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8B82008A2BD03BE80078FEB0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8B82008B2BD085950078FEB0 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
+		8BD7FAFA2BD2F1BD002D65C9 /* IMG_2554.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = IMG_2554.mov; sourceTree = "<group>"; };
+		8BE504FA2BD4B74E00B36662 /* AVAsset+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAsset+Extensions.swift"; sourceTree = "<group>"; };
+		8BE504FE2BD789CD00B36662 /* EditorPlayerControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorPlayerControlView.swift; sourceTree = "<group>"; };
+		8BE505002BD8388500B36662 /* EditorTimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorTimelineView.swift; sourceTree = "<group>"; };
+		8BE505022BD83C2A00B36662 /* GOST.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GOST.ttf; sourceTree = "<group>"; };
+		8BE505052BD83D0700B36662 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8B8200572BD0393A0078FEB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B8200672BD0393B0078FEB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B8200712BD0393B0078FEB0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8B42BB672BD190BE003A438D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8B42BB6A2BD192A0003A438D /* AVPlayerViewControllerRepresentable.swift */,
+				8B42BB742BD1A602003A438D /* Extensions */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		8B42BB742BD1A602003A438D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8BE504FA2BD4B74E00B36662 /* AVAsset+Extensions.swift */,
+				8B42BB752BD1A61B003A438D /* UIImage+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8B8200512BD0393A0078FEB0 = {
+			isa = PBXGroup;
+			children = (
+				8B82008A2BD03BE80078FEB0 /* README.md */,
+				8B82005C2BD0393A0078FEB0 /* Noraa */,
+				8B82006D2BD0393B0078FEB0 /* NoraaTests */,
+				8B8200772BD0393B0078FEB0 /* NoraaUITests */,
+				8B82005B2BD0393A0078FEB0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8B82005B2BD0393A0078FEB0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8B82005A2BD0393A0078FEB0 /* Noraa.app */,
+				8B82006A2BD0393B0078FEB0 /* NoraaTests.xctest */,
+				8B8200742BD0393B0078FEB0 /* NoraaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8B82005C2BD0393A0078FEB0 /* Noraa */ = {
+			isa = PBXGroup;
+			children = (
+				8BE505052BD83D0700B36662 /* Info.plist */,
+				8B82005D2BD0393A0078FEB0 /* NoraaApp.swift */,
+				8B82005F2BD0393A0078FEB0 /* ContentView.swift */,
+				8B8200872BD0399A0078FEB0 /* Views */,
+				8B8200882BD039A10078FEB0 /* ViewModels */,
+				8B8200892BD039AC0078FEB0 /* Models */,
+				8B42BB672BD190BE003A438D /* Utilities */,
+				8B8200612BD0393B0078FEB0 /* Assets.xcassets */,
+				8BD7FAF92BD2F174002D65C9 /* Resources */,
+				8B8200632BD0393B0078FEB0 /* Preview Content */,
+			);
+			path = Noraa;
+			sourceTree = "<group>";
+		};
+		8B8200632BD0393B0078FEB0 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				8B8200642BD0393B0078FEB0 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8B82006D2BD0393B0078FEB0 /* NoraaTests */ = {
+			isa = PBXGroup;
+			children = (
+				8B82006E2BD0393B0078FEB0 /* NoraaTests.swift */,
+			);
+			path = NoraaTests;
+			sourceTree = "<group>";
+		};
+		8B8200772BD0393B0078FEB0 /* NoraaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8B8200782BD0393B0078FEB0 /* NoraaUITests.swift */,
+				8B82007A2BD0393B0078FEB0 /* NoraaUITestsLaunchTests.swift */,
+			);
+			path = NoraaUITests;
+			sourceTree = "<group>";
+		};
+		8B8200872BD0399A0078FEB0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8B82008B2BD085950078FEB0 /* EditorView.swift */,
+				8B42BB6C2BD19396003A438D /* EditorPlayerView.swift */,
+				8BE505002BD8388500B36662 /* EditorTimelineView.swift */,
+				8BE504FE2BD789CD00B36662 /* EditorPlayerControlView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8B8200882BD039A10078FEB0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				8B42BB6E2BD19926003A438D /* EditorViewModel.swift */,
+				8B42BB682BD190E7003A438D /* EditorPlayerViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		8B8200892BD039AC0078FEB0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8B42BB702BD19A23003A438D /* Video.swift */,
+				8B42BB722BD19B2D003A438D /* Thumbnail.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8BD7FAF92BD2F174002D65C9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8BE505032BD83C2A00B36662 /* Fonts */,
+				8BD7FAFA2BD2F1BD002D65C9 /* IMG_2554.mov */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8BE505032BD83C2A00B36662 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8BE505022BD83C2A00B36662 /* GOST.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8B8200592BD0393A0078FEB0 /* Noraa */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B82007E2BD0393B0078FEB0 /* Build configuration list for PBXNativeTarget "Noraa" */;
+			buildPhases = (
+				8B8200562BD0393A0078FEB0 /* Sources */,
+				8B8200572BD0393A0078FEB0 /* Frameworks */,
+				8B8200582BD0393A0078FEB0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Noraa;
+			productName = Norra;
+			productReference = 8B82005A2BD0393A0078FEB0 /* Noraa.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8B8200692BD0393B0078FEB0 /* NoraaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B8200812BD0393B0078FEB0 /* Build configuration list for PBXNativeTarget "NoraaTests" */;
+			buildPhases = (
+				8B8200662BD0393B0078FEB0 /* Sources */,
+				8B8200672BD0393B0078FEB0 /* Frameworks */,
+				8B8200682BD0393B0078FEB0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8B82006C2BD0393B0078FEB0 /* PBXTargetDependency */,
+			);
+			name = NoraaTests;
+			productName = NorraTests;
+			productReference = 8B82006A2BD0393B0078FEB0 /* NoraaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8B8200732BD0393B0078FEB0 /* NoraaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B8200842BD0393B0078FEB0 /* Build configuration list for PBXNativeTarget "NoraaUITests" */;
+			buildPhases = (
+				8B8200702BD0393B0078FEB0 /* Sources */,
+				8B8200712BD0393B0078FEB0 /* Frameworks */,
+				8B8200722BD0393B0078FEB0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8B8200762BD0393B0078FEB0 /* PBXTargetDependency */,
+			);
+			name = NoraaUITests;
+			productName = NorraUITests;
+			productReference = 8B8200742BD0393B0078FEB0 /* NoraaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8B8200522BD0393A0078FEB0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					8B8200592BD0393A0078FEB0 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					8B8200692BD0393B0078FEB0 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 8B8200592BD0393A0078FEB0;
+					};
+					8B8200732BD0393B0078FEB0 = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = 8B8200592BD0393A0078FEB0;
+					};
+				};
+			};
+			buildConfigurationList = 8B8200552BD0393A0078FEB0 /* Build configuration list for PBXProject "Noraa" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8B8200512BD0393A0078FEB0;
+			productRefGroup = 8B82005B2BD0393A0078FEB0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8B8200592BD0393A0078FEB0 /* Noraa */,
+				8B8200692BD0393B0078FEB0 /* NoraaTests */,
+				8B8200732BD0393B0078FEB0 /* NoraaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8B8200582BD0393A0078FEB0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BE505042BD83C2A00B36662 /* GOST.ttf in Resources */,
+				8BD7FAFB2BD2F1BD002D65C9 /* IMG_2554.mov in Resources */,
+				8B8200652BD0393B0078FEB0 /* Preview Assets.xcassets in Resources */,
+				8B8200622BD0393B0078FEB0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B8200682BD0393B0078FEB0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B8200722BD0393B0078FEB0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8B8200562BD0393A0078FEB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BE504FB2BD4B74E00B36662 /* AVAsset+Extensions.swift in Sources */,
+				8BE505012BD8388500B36662 /* EditorTimelineView.swift in Sources */,
+				8B42BB6F2BD19926003A438D /* EditorViewModel.swift in Sources */,
+				8B82008C2BD085950078FEB0 /* EditorView.swift in Sources */,
+				8B8200602BD0393A0078FEB0 /* ContentView.swift in Sources */,
+				8BE504FF2BD789CD00B36662 /* EditorPlayerControlView.swift in Sources */,
+				8B42BB732BD19B2D003A438D /* Thumbnail.swift in Sources */,
+				8B42BB692BD190E7003A438D /* EditorPlayerViewModel.swift in Sources */,
+				8B42BB6B2BD192A0003A438D /* AVPlayerViewControllerRepresentable.swift in Sources */,
+				8B42BB712BD19A23003A438D /* Video.swift in Sources */,
+				8B42BB762BD1A61B003A438D /* UIImage+Extensions.swift in Sources */,
+				8B82005E2BD0393A0078FEB0 /* NoraaApp.swift in Sources */,
+				8B42BB6D2BD19396003A438D /* EditorPlayerView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B8200662BD0393B0078FEB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B82006F2BD0393B0078FEB0 /* NoraaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B8200702BD0393B0078FEB0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8B8200792BD0393B0078FEB0 /* NoraaUITests.swift in Sources */,
+				8B82007B2BD0393B0078FEB0 /* NoraaUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8B82006C2BD0393B0078FEB0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B8200592BD0393A0078FEB0 /* Noraa */;
+			targetProxy = 8B82006B2BD0393B0078FEB0 /* PBXContainerItemProxy */;
+		};
+		8B8200762BD0393B0078FEB0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B8200592BD0393A0078FEB0 /* Noraa */;
+			targetProxy = 8B8200752BD0393B0078FEB0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		8B82007C2BD0393B0078FEB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8B82007D2BD0393B0078FEB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8B82007F2BD0393B0078FEB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Noraa/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Noraa/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Noraa;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.noraa.Noraa;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8B8200802BD0393B0078FEB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Noraa/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Noraa/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Noraa;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.noraa.Noraa;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		8B8200822BD0393B0078FEB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.norra.NorraTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Noraa.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Noraa";
+			};
+			name = Debug;
+		};
+		8B8200832BD0393B0078FEB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.norra.NorraTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Noraa.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Noraa";
+			};
+			name = Release;
+		};
+		8B8200852BD0393B0078FEB0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.norra.NorraUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Norra;
+			};
+			name = Debug;
+		};
+		8B8200862BD0393B0078FEB0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ai.norra.NorraUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Norra;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8B8200552BD0393A0078FEB0 /* Build configuration list for PBXProject "Noraa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B82007C2BD0393B0078FEB0 /* Debug */,
+				8B82007D2BD0393B0078FEB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B82007E2BD0393B0078FEB0 /* Build configuration list for PBXNativeTarget "Noraa" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B82007F2BD0393B0078FEB0 /* Debug */,
+				8B8200802BD0393B0078FEB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B8200812BD0393B0078FEB0 /* Build configuration list for PBXNativeTarget "NoraaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B8200822BD0393B0078FEB0 /* Debug */,
+				8B8200832BD0393B0078FEB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B8200842BD0393B0078FEB0 /* Build configuration list for PBXNativeTarget "NoraaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B8200852BD0393B0078FEB0 /* Debug */,
+				8B8200862BD0393B0078FEB0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8B8200522BD0393A0078FEB0 /* Project object */;
+}
