@@ -26,7 +26,7 @@ struct VideoFrame {
 	}
 }
 
-struct Video: Identifiable {
+struct Video: Identifiable, Equatable {
 	let asset: AVAsset
 	
 	var id: UUID = UUID()
@@ -36,8 +36,6 @@ struct Video: Identifiable {
 	var size: CGSize = .zero
 	var thumbnails: [Thumbnail] = [Thumbnail]()
 	var volume: Float = 1.0
-	
-	var geometrySize: CGSize = .zero
 	
 	var frame: VideoFrame? = nil
 	
@@ -62,10 +60,11 @@ struct Video: Identifiable {
 		let duration = try await asset.load(.duration).seconds
 		
 		// TODO: Play around with this value
-		let count = Int(ceil(duration / 8.0))
+		let interval: Double = 5.0
+		let count = Int(ceil(duration / interval))
 		var times: [CMTime] = [CMTime]()
 		for i in 0..<count {
-			times.append(CMTime(seconds: Double(i) * 8.0, preferredTimescale: 600))
+			times.append(CMTime(seconds: Double(i) * interval, preferredTimescale: 600))
 		}
 		
 		var thumbnails: [Thumbnail] = [Thumbnail]()
@@ -87,5 +86,11 @@ struct Video: Identifiable {
 		}
 		
 		return thumbnails
+	}
+}
+
+extension Video {
+	static func == (lhs: Video, rhs: Video) -> Bool {
+		lhs.id == rhs.id
 	}
 }

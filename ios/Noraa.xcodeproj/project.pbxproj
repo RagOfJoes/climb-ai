@@ -14,6 +14,7 @@
 		8B42BB712BD19A23003A438D /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B42BB702BD19A23003A438D /* Video.swift */; };
 		8B42BB732BD19B2D003A438D /* Thumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B42BB722BD19B2D003A438D /* Thumbnail.swift */; };
 		8B42BB762BD1A61B003A438D /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B42BB752BD1A61B003A438D /* UIImage+Extensions.swift */; };
+		8B81B55D2BDFF34A00E2C060 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B81B55C2BDFF34A00E2C060 /* Double+Extensions.swift */; };
 		8B82005E2BD0393A0078FEB0 /* NoraaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82005D2BD0393A0078FEB0 /* NoraaApp.swift */; };
 		8B8200602BD0393A0078FEB0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82005F2BD0393A0078FEB0 /* ContentView.swift */; };
 		8B8200622BD0393B0078FEB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B8200612BD0393B0078FEB0 /* Assets.xcassets */; };
@@ -22,6 +23,8 @@
 		8B8200792BD0393B0078FEB0 /* NoraaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B8200782BD0393B0078FEB0 /* NoraaUITests.swift */; };
 		8B82007B2BD0393B0078FEB0 /* NoraaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82007A2BD0393B0078FEB0 /* NoraaUITestsLaunchTests.swift */; };
 		8B82008C2BD085950078FEB0 /* EditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B82008B2BD085950078FEB0 /* EditorView.swift */; };
+		8BD1CEAB2BD97AB700DB02E8 /* EditorBetaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1CEAA2BD97AB700DB02E8 /* EditorBetaView.swift */; };
+		8BD1CEAD2BD9984300DB02E8 /* EditorSeekerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD1CEAC2BD9984300DB02E8 /* EditorSeekerView.swift */; };
 		8BD7FAFB2BD2F1BD002D65C9 /* IMG_2554.mov in Resources */ = {isa = PBXBuildFile; fileRef = 8BD7FAFA2BD2F1BD002D65C9 /* IMG_2554.mov */; };
 		8BE504FB2BD4B74E00B36662 /* AVAsset+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE504FA2BD4B74E00B36662 /* AVAsset+Extensions.swift */; };
 		8BE504FF2BD789CD00B36662 /* EditorPlayerControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE504FE2BD789CD00B36662 /* EditorPlayerControlView.swift */; };
@@ -54,6 +57,7 @@
 		8B42BB702BD19A23003A438D /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		8B42BB722BD19B2D003A438D /* Thumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thumbnail.swift; sourceTree = "<group>"; };
 		8B42BB752BD1A61B003A438D /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		8B81B55C2BDFF34A00E2C060 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		8B82005A2BD0393A0078FEB0 /* Noraa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noraa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B82005D2BD0393A0078FEB0 /* NoraaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoraaApp.swift; sourceTree = "<group>"; };
 		8B82005F2BD0393A0078FEB0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +71,8 @@
 		8B82008A2BD03BE80078FEB0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8B82008B2BD085950078FEB0 /* EditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorView.swift; sourceTree = "<group>"; };
 		8BD1CEA82BD96E9100DB02E8 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		8BD1CEAA2BD97AB700DB02E8 /* EditorBetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorBetaView.swift; sourceTree = "<group>"; };
+		8BD1CEAC2BD9984300DB02E8 /* EditorSeekerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorSeekerView.swift; sourceTree = "<group>"; };
 		8BD7FAFA2BD2F1BD002D65C9 /* IMG_2554.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = IMG_2554.mov; sourceTree = "<group>"; };
 		8BE504FA2BD4B74E00B36662 /* AVAsset+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAsset+Extensions.swift"; sourceTree = "<group>"; };
 		8BE504FE2BD789CD00B36662 /* EditorPlayerControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorPlayerControlView.swift; sourceTree = "<group>"; };
@@ -113,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				8BE504FA2BD4B74E00B36662 /* AVAsset+Extensions.swift */,
+				8B81B55C2BDFF34A00E2C060 /* Double+Extensions.swift */,
 				8B42BB752BD1A61B003A438D /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
@@ -187,7 +194,9 @@
 			children = (
 				8B82008B2BD085950078FEB0 /* EditorView.swift */,
 				8B42BB6C2BD19396003A438D /* EditorPlayerView.swift */,
+				8BD1CEAC2BD9984300DB02E8 /* EditorSeekerView.swift */,
 				8BE505002BD8388500B36662 /* EditorTimelineView.swift */,
+				8BD1CEAA2BD97AB700DB02E8 /* EditorBetaView.swift */,
 				8BE504FE2BD789CD00B36662 /* EditorPlayerControlView.swift */,
 			);
 			path = Views;
@@ -367,10 +376,13 @@
 				8B8200602BD0393A0078FEB0 /* ContentView.swift in Sources */,
 				8BE504FF2BD789CD00B36662 /* EditorPlayerControlView.swift in Sources */,
 				8B42BB732BD19B2D003A438D /* Thumbnail.swift in Sources */,
+				8BD1CEAB2BD97AB700DB02E8 /* EditorBetaView.swift in Sources */,
+				8B81B55D2BDFF34A00E2C060 /* Double+Extensions.swift in Sources */,
 				8B42BB692BD190E7003A438D /* EditorPlayerViewModel.swift in Sources */,
 				8B42BB6B2BD192A0003A438D /* AVPlayerViewControllerRepresentable.swift in Sources */,
 				8B42BB712BD19A23003A438D /* Video.swift in Sources */,
 				8B42BB762BD1A61B003A438D /* UIImage+Extensions.swift in Sources */,
+				8BD1CEAD2BD9984300DB02E8 /* EditorSeekerView.swift in Sources */,
 				8B82005E2BD0393A0078FEB0 /* NoraaApp.swift in Sources */,
 				8B42BB6D2BD19396003A438D /* EditorPlayerView.swift in Sources */,
 			);
@@ -536,6 +548,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Noraa/Preview Content\"";
+				DEVELOPMENT_TEAM = D6QC9H8B54;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Noraa/Info.plist;
@@ -567,6 +580,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Noraa/Preview Content\"";
+				DEVELOPMENT_TEAM = D6QC9H8B54;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Noraa/Info.plist;

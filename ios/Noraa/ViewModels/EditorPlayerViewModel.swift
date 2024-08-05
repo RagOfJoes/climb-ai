@@ -44,6 +44,7 @@ final class EditorPlayerViewModel: ObservableObject {
 	@Published private(set) var player: AVPlayer = AVPlayer()
 	
 	private var cancellable: Set<AnyCancellable> = Set<AnyCancellable>()
+	private var isSeeking: Bool = false
 	private var rangeDuration: ClosedRange<Double>?
 	private var timeObserver: Any?
 	
@@ -58,7 +59,7 @@ final class EditorPlayerViewModel: ObservableObject {
 		didSet {
 			switch scrub {
 			case .ended(let time):
-				self.player.pause()
+				self.pause()
 				self.seek(CMTime(seconds: time, preferredTimescale: 600).seconds)
 			default:
 				break
@@ -76,12 +77,12 @@ final class EditorPlayerViewModel: ObservableObject {
 		$loadState
 			.dropFirst()
 			.receive(on: DispatchQueue.main)
-			.sink { [weak self] ls in
+			.sink { [weak self] state in
 				guard let self else {
 					return
 				}
 				
-				switch ls {
+				switch state {
 				case .loaded(let url, let duration):
 					if self.isPlaying {
 						self.player.pause()
@@ -102,6 +103,10 @@ final class EditorPlayerViewModel: ObservableObject {
 		player.publisher(for: \.timeControlStatus)
 			.sink { [weak self] status in
 				guard let self else {
+					return
+				}
+				
+				if isSeeking {
 					return
 				}
 				
@@ -133,7 +138,7 @@ final class EditorPlayerViewModel: ObservableObject {
 			}
 			
 			let current = time.seconds
-			if let rangeDuration, current >= rangeDuration.upperBound {
+			if let rangeDuration, self.isPlaying && current >= rangeDuration.upperBound {
 				self.pause()
 			}
 			
@@ -169,24 +174,26 @@ extension EditorPlayerViewModel {
 			print("Error \(error.localizedDescription)")
 		}
 		
-		player.play()
+		if let rangeDuration, !isPlaying && currentTime >= rangeDuration.upperBound {
+			self.seek(.zero)
+		}
 		
 		if let rate {
 			player.rate = rate
 		}
-		
-		if let rangeDuration, player.currentItem?.duration.seconds ?? 0 >= rangeDuration.upperBound {
-			NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: player.currentItem, queue: .main) { _ in
-				self.seek(0)
-			}
-		}
+
+		player.play()
 	}
 	
 	func seek(_ to: Double) {
+		guard let rangeDuration else {
+			return
+		}
+		
 		var seconds: Double = to
 		if to <= 0 {
 			seconds = 0
-		} else if to >= duration {
+		} else if to >= rangeDuration.upperBound {
 			seconds = duration
 		}
 
@@ -201,5 +208,35 @@ extension EditorPlayerViewModel {
 	
 	func toggle(_ video: Video) {
 		isPlaying ? pause() : play(video.rate)
+	}
+}
+
+extension EditorPlayerViewModel {
+	func onDragSeek(gesture: DragGesture.Value, container: GeometryProxy) {
+		guard let rangeDuration else {
+			return
+		}
+		
+		isSeeking = true
+		if isPlaying {
+			player.pause()
+		}
+
+		var newTime = -(gesture.translation.width / (container.size.width * 0.3)) + currentTime
+		newTime = max(0, newTime)
+		newTime = min(rangeDuration.upperBound, newTime)
+		
+		seek(newTime)
+	}
+	
+	func onDragSeekEnd(gesture: DragGesture.Value, container: GeometryProxy) {
+		if !isSeeking {
+			return
+		}
+
+		isSeeking = false
+		if isPlaying {
+			player.play()
+		}
 	}
 }
